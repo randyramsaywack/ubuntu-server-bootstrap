@@ -23,6 +23,7 @@ The project is intentionally small and readable so it can be audited, customized
 - Detects whether a reboot is required
 - Logs all output to `/var/log/ubuntu-base-setup.log`
 - Prints a system health summary at the end of the run
+- Includes a Proxmox template creation script for Ubuntu 24.04 cloud-init images
 
 ## Installed Components
 
@@ -58,6 +59,8 @@ sudo DOCKER_USER=admin ./ubuntu-base-setup.sh
 ```
 
 You can also run it directly from cloud-init by downloading the script during first boot. See [docs/cloud-init-example.yaml](docs/cloud-init-example.yaml).
+
+To create a reusable Proxmox Ubuntu 24.04 cloud-init template, see [docs/proxmox-template.md](docs/proxmox-template.md) and [scripts/create-proxmox-ubuntu-template.sh](scripts/create-proxmox-ubuntu-template.sh).
 
 ## Cloud-Init Example
 
