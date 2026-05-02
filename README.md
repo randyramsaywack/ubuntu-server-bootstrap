@@ -132,6 +132,10 @@ The log includes package installation output, service enablement, SSH validation
 - Repeatable VM setup for testing and development
 - Demonstrating Linux administration automation in a portfolio or resume
 
+## Related Projects
+
+- [proxmox-vm-factory](https://github.com/randyramsaywack/proxmox-vm-factory): clone and configure Proxmox VMs from the templates created by this project.
+
 ## Tested With
 
 - Ubuntu 24.04 Noble cloud image
