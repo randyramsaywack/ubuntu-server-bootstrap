@@ -8,10 +8,16 @@
 [OK] Docker Engine and Docker Compose plugin installed.
 [OK] Added ubuntu to the docker group. A new login session is required for group membership to apply.
 [INFO] Enabling and starting core services.
-[OK] Enabled and started qemu-guest-agent.
-[OK] Enabled and started chrony.
-[OK] Enabled and started fail2ban.
-[OK] Enabled and started docker.
+[WARN] qemu-guest-agent has enable state 'static', so it cannot be enabled directly.
+[OK] Started qemu-guest-agent.
+[OK] chrony is already enabled.
+[OK] Started chrony.
+[OK] fail2ban is already enabled.
+[OK] Started fail2ban.
+[OK] docker is already enabled.
+[OK] Started docker.
+[OK] Enabled ssh.
+[OK] Started ssh.
 [INFO] Configuring UFW firewall.
 Rule added
 Rule added (v6)
@@ -24,11 +30,11 @@ Firewall is active and enabled on system startup
 [OK] Detected SSH authorized_keys for ubuntu.
 [OK] SSH hardening applied and ssh service reloaded.
 [INFO] Validating service state.
-[OK] qemu-guest-agent is enabled and active.
-[OK] chrony is enabled and active.
-[OK] fail2ban is enabled and active.
-[OK] docker is enabled and active.
-[OK] ssh is enabled and active.
+[OK] qemu-guest-agent is active with enable state 'static'.
+[OK] chrony is active with enable state 'enabled'.
+[OK] fail2ban is active with enable state 'enabled'.
+[OK] docker is active with enable state 'enabled'.
+[OK] ssh is active with enable state 'enabled'.
 
 [INFO] System health summary.
 

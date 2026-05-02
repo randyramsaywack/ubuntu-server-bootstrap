@@ -19,7 +19,7 @@ write_files:
       set -euo pipefail
       curl -fsSL https://raw.githubusercontent.com/randyramsaywack/ubuntu-server-bootstrap/main/ubuntu-base-setup.sh -o /tmp/ubuntu-base-setup.sh
       chmod +x /tmp/ubuntu-base-setup.sh
-      /tmp/ubuntu-base-setup.sh
+      DOCKER_USER=ubuntu /tmp/ubuntu-base-setup.sh
 
 runcmd:
   - [bash, /usr/local/sbin/run-ubuntu-base-setup.sh]

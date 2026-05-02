@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 VMID="${VMID:-9000}"
 VM_NAME="${VM_NAME:-ubuntu-2404-cloudinit}"
-STORAGE="${STORAGE:-local-lvm}"
+STORAGE="${STORAGE:-proxmox-zfs}"
 SNIPPET_STORAGE="${SNIPPET_STORAGE:-local}"
 SNIPPET_NAME="${SNIPPET_NAME:-ubuntu-server-bootstrap.yaml}"
 BRIDGE="${BRIDGE:-vmbr0}"

@@ -139,12 +139,29 @@ enable_services() {
     chrony
     fail2ban
     docker
+    ssh
   )
 
   info "Enabling and starting core services."
   for service in "${services[@]}"; do
-    systemctl enable --now "$service"
-    ok "Enabled and started ${service}."
+    local enable_state
+    enable_state="$(systemctl is-enabled "$service" 2>/dev/null || true)"
+
+    case "$enable_state" in
+      enabled|enabled-runtime)
+        ok "${service} is already enabled."
+        ;;
+      static|generated|indirect|alias)
+        warn "${service} has enable state '${enable_state}', so it cannot be enabled directly."
+        ;;
+      *)
+        systemctl enable "$service"
+        ok "Enabled ${service}."
+        ;;
+    esac
+
+    systemctl start "$service"
+    ok "Started ${service}."
   done
 }
 
@@ -183,7 +200,7 @@ backup_sshd_config() {
 
 warn_about_ssh_keys() {
   local user_home=""
-  local ssh_user="${SUDO_USER:-root}"
+  local ssh_user="${SSH_KEY_USER:-${DOCKER_USER:-${SUDO_USER:-root}}}"
 
   if [[ "$ssh_user" == "root" ]]; then
     user_home="/root"
@@ -203,6 +220,7 @@ configure_ssh_hardening() {
   backup_sshd_config
   warn_about_ssh_keys
   install -m 0755 -d /etc/ssh/sshd_config.d
+  install -m 0755 -d /run/sshd
 
   if [[ -f "$SSH_CONFIG" ]] && ! grep -Eq '^[[:space:]]*Include[[:space:]]+/etc/ssh/sshd_config\.d/\*\.conf' "$SSH_CONFIG"; then
     sed -i '1iInclude /etc/ssh/sshd_config.d/*.conf' "$SSH_CONFIG"
@@ -234,13 +252,24 @@ EOF
 
 validate_service() {
   local service="$1"
+  local enable_state
+  enable_state="$(systemctl is-enabled "$service" 2>/dev/null || true)"
 
-  if systemctl is-enabled "$service" >/dev/null 2>&1 && systemctl is-active "$service" >/dev/null 2>&1; then
-    ok "${service} is enabled and active."
-  else
-    warn "${service} is not both enabled and active."
+  if ! systemctl is-active "$service" >/dev/null 2>&1; then
+    warn "${service} is not active."
     systemctl --no-pager --full status "$service" || true
+    return
   fi
+
+  case "$enable_state" in
+    enabled|enabled-runtime|static|generated|indirect|alias)
+      ok "${service} is active with enable state '${enable_state}'."
+      ;;
+    *)
+      warn "${service} is active but has enable state '${enable_state:-unknown}'."
+      systemctl --no-pager --full status "$service" || true
+      ;;
+  esac
 }
 
 validate_services() {

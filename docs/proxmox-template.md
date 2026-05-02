@@ -26,7 +26,7 @@ pvesm status
 
 Common defaults:
 
-- VM disk storage: `local-lvm`
+- VM disk storage: `proxmox-zfs`
 - Snippet storage: `local`
 - Bridge: `vmbr0`
 
@@ -70,7 +70,7 @@ Override settings with environment variables:
 ```bash
 VMID=9024 \
 VM_NAME=ubuntu-2404-bootstrap \
-STORAGE=local-lvm \
+STORAGE=proxmox-zfs \
 SNIPPET_STORAGE=local \
 BRIDGE=vmbr0 \
 MEMORY=4096 \
