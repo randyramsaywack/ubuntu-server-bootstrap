@@ -1,0 +1,27 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+users:
+  - name: ubuntu
+    groups: [adm, sudo]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ssh-ed25519 REPLACE_WITH_YOUR_PUBLIC_KEY user@example
+
+write_files:
+  - path: /usr/local/sbin/run-ubuntu-base-setup.sh
+    owner: root:root
+    permissions: "0755"
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+      curl -fsSL https://raw.githubusercontent.com/YOUR-USERNAME/ubuntu-server-bootstrap/main/ubuntu-base-setup.sh -o /tmp/ubuntu-base-setup.sh
+      chmod +x /tmp/ubuntu-base-setup.sh
+      /tmp/ubuntu-base-setup.sh
+
+runcmd:
+  - [bash, /usr/local/sbin/run-ubuntu-base-setup.sh]
+
+final_message: "Ubuntu Server Bootstrap cloud-init run completed after $UPTIME seconds."

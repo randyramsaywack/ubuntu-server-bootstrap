@@ -1,0 +1,66 @@
+[INFO] Starting Ubuntu Server Bootstrap.
+[OK] Detected Ubuntu 24.04.2 LTS.
+[INFO] Updating package lists and applying full upgrade.
+[OK] System packages are up to date.
+[INFO] Installing common Linux administration tools.
+[OK] Administration tools installed.
+[INFO] Installing Docker Engine and Docker Compose plugin from Docker's official apt repository.
+[OK] Docker Engine and Docker Compose plugin installed.
+[OK] Added ubuntu to the docker group. A new login session is required for group membership to apply.
+[INFO] Enabling and starting core services.
+[OK] Enabled and started qemu-guest-agent.
+[OK] Enabled and started chrony.
+[OK] Enabled and started fail2ban.
+[OK] Enabled and started docker.
+[INFO] Configuring UFW firewall.
+Rule added
+Rule added (v6)
+Firewall is active and enabled on system startup
+[OK] UFW enabled with OpenSSH allowed.
+[INFO] Configuring unattended security upgrades.
+[OK] Unattended upgrades configured.
+[INFO] Applying SSH hardening.
+[OK] Backed up SSH configuration to /etc/ssh/sshd_config.bak.20260502143011.
+[OK] Detected SSH authorized_keys for ubuntu.
+[OK] SSH hardening applied and ssh service reloaded.
+[INFO] Validating service state.
+[OK] qemu-guest-agent is enabled and active.
+[OK] chrony is enabled and active.
+[OK] fail2ban is enabled and active.
+[OK] docker is enabled and active.
+[OK] ssh is enabled and active.
+
+[INFO] System health summary.
+
+[INFO] Uptime
+ 14:35:42 up 7 min,  1 user,  load average: 0.08, 0.14, 0.09
+
+[INFO] Disk usage
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        31G  3.8G   27G  13% /
+
+[INFO] Memory usage
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       524Mi       2.7Gi       1.5Mi       789Mi       3.2Gi
+Swap:             0B          0B          0B
+
+[INFO] CPU info
+Architecture: x86_64
+CPU(s): 2
+Model name: Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
+
+[INFO] IP addresses
+192.168.10.45
+fe80::be24:11ff:fe8a:7c12
+
+[INFO] Failed systemd units
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+0 loaded units listed.
+
+[INFO] Docker version
+Docker version 26.1.4, build 5650f9b
+Docker Compose version v2.27.1
+[WARN] A reboot is required to complete system updates.
+[INFO] Packages requesting reboot:
+linux-image-6.8.0-31-generic
+[DONE] Ubuntu Server Bootstrap completed. Log saved to /var/log/ubuntu-base-setup.log.
