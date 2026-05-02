@@ -24,6 +24,7 @@ The project is intentionally small and readable so it can be audited, customized
 - Logs all output to `/var/log/ubuntu-base-setup.log`
 - Prints a system health summary at the end of the run
 - Includes a Proxmox template creation script for Ubuntu 24.04 cloud-init images
+- Includes an optional Codex/XFCE/XRDP workstation setup layer
 
 ## Installed Components
 
@@ -61,6 +62,8 @@ sudo DOCKER_USER=admin ./ubuntu-base-setup.sh
 You can also run it directly from cloud-init by downloading the script during first boot. See [docs/cloud-init-example.yaml](docs/cloud-init-example.yaml).
 
 To create a reusable Proxmox Ubuntu 24.04 cloud-init template, see [docs/proxmox-template.md](docs/proxmox-template.md) and [scripts/create-proxmox-ubuntu-template.sh](scripts/create-proxmox-ubuntu-template.sh).
+
+To turn a bootstrapped VM into a Codex workstation with XFCE and LAN-scoped XRDP access, see [docs/codex-xfce-workstation.md](docs/codex-xfce-workstation.md) and [scripts/setup-codex-xfce-workstation.sh](scripts/setup-codex-xfce-workstation.sh).
 
 ## Cloud-Init Example
 
@@ -128,6 +131,8 @@ The log includes package installation output, service enablement, SSH validation
 - Proxmox Ubuntu 24.04 cloud-init VM templates
 - Home lab server provisioning
 - Docker host bootstrap
+- Codex CLI workstation setup
+- XFCE desktop access over LAN-scoped XRDP
 - Baseline hardening for small Ubuntu servers
 - Repeatable VM setup for testing and development
 - Demonstrating Linux administration automation in a portfolio or resume
