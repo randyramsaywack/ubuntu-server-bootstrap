@@ -101,6 +101,18 @@ At the end of the run, the script prints a concise health summary:
 
 This gives you a quick operational snapshot immediately after provisioning.
 
+Example successful completion:
+
+```text
+[OK] SSH hardening applied and ssh service reloaded.
+[OK] qemu-guest-agent is active with enable state 'static'.
+[OK] chrony is active with enable state 'enabled'.
+[OK] fail2ban is active with enable state 'enabled'.
+[OK] docker is active with enable state 'enabled'.
+[OK] ssh is active with enable state 'enabled'.
+[DONE] Ubuntu Server Bootstrap completed. Log saved to /var/log/ubuntu-base-setup.log.
+```
+
 ## Logging
 
 All output is written to:
@@ -120,6 +132,14 @@ The log includes package installation output, service enablement, SSH validation
 - Repeatable VM setup for testing and development
 - Demonstrating Linux administration automation in a portfolio or resume
 
+## Tested With
+
+- Ubuntu 24.04 Noble cloud image
+- Proxmox VE cloud-init VMs
+- NoCloud cloud-init datasource
+- ZFS-backed Proxmox VM storage
+- DHCP networking with QEMU Guest Agent enabled
+
 ## Design Philosophy
 
 This project favors practical automation over heavy abstraction. The script uses plain Bash functions, clear status labels, standard Ubuntu packages, and idempotent checks where they add value.
@@ -129,6 +149,12 @@ It is meant to be easy to read, easy to modify, and safe enough for common VM pr
 ## Resume-Ready Project Description
 
 Built a Bash-based Ubuntu 24.04 server provisioning tool for Proxmox cloud-init virtual machines. Automated system updates, Linux administration tooling, QEMU guest integration, Docker installation, firewall configuration, Fail2Ban, Chrony, unattended upgrades, SSH hardening, service validation, reboot detection, and operational health reporting with full logging to `/var/log`.
+
+Resume bullet:
+
+```text
+Built a Bash-based Ubuntu 24.04 provisioning toolkit for Proxmox cloud-init VMs, automating Docker installation, guest agent setup, SSH hardening, firewall configuration, unattended upgrades, service validation, and operational health logging.
+```
 
 ## Disclaimer
 
