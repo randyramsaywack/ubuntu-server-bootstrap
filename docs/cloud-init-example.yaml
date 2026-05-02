@@ -17,7 +17,7 @@ write_files:
     content: |
       #!/usr/bin/env bash
       set -euo pipefail
-      curl -fsSL https://raw.githubusercontent.com/YOUR-USERNAME/ubuntu-server-bootstrap/main/ubuntu-base-setup.sh -o /tmp/ubuntu-base-setup.sh
+      curl -fsSL https://raw.githubusercontent.com/randyramsaywack/ubuntu-server-bootstrap/main/ubuntu-base-setup.sh -o /tmp/ubuntu-base-setup.sh
       chmod +x /tmp/ubuntu-base-setup.sh
       /tmp/ubuntu-base-setup.sh
 

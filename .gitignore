@@ -1,0 +1,4 @@
+# Local deployment files that may contain real SSH public keys or environment-specific settings.
+cloud-init.local.yaml
+*.local.yaml
+

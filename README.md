@@ -45,7 +45,7 @@ Docker is installed from Docker's official Ubuntu apt repository.
 Clone the repository onto a fresh Ubuntu 24.04 server:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/ubuntu-server-bootstrap.git
+git clone https://github.com/randyramsaywack/ubuntu-server-bootstrap.git
 cd ubuntu-server-bootstrap
 chmod +x ubuntu-base-setup.sh
 sudo ./ubuntu-base-setup.sh
@@ -63,7 +63,13 @@ You can also run it directly from cloud-init by downloading the script during fi
 
 This repository includes a Proxmox-friendly cloud-init example in [docs/cloud-init-example.yaml](docs/cloud-init-example.yaml). The example creates a user, installs the script, and runs it once during VM initialization.
 
-For production use, update the example with your own GitHub URL and SSH public key before deploying.
+For deployment, keep the public example generic and create a local copy:
+
+```bash
+cp docs/cloud-init-example.yaml cloud-init.local.yaml
+```
+
+Then edit `cloud-init.local.yaml` with your real SSH public key and deployment-specific settings. The local file is ignored by Git so your key and environment details are not committed.
 
 ## SSH Hardening Warning
 
